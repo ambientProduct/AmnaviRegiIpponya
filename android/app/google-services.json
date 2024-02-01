@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "480916990528",
+    "project_id": "ipponyatest",
+    "storage_bucket": "ipponyatest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480916990528:android:96369b194cde0b99e1cda5",
+        "android_client_info": {
+          "package_name": "com.mycompany.funfoipadui"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAQSEd4KB_FlCHlLYPiWB08XDa7uNyZRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480916990528:android:9988fcc49c662d18e1cda5",
+        "android_client_info": {
+          "package_name": "com.mycompany.funfoui"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAQSEd4KB_FlCHlLYPiWB08XDa7uNyZRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
