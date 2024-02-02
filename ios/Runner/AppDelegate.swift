@@ -23,13 +23,16 @@ import StarIO10
             }
             
             if call.method == "sendPrintData" {
+                print("sendPrintData method called") // ログを追加
                 if let arguments = call.arguments as? [String: Any],
                    let name = arguments["name"] as? String,
                    let tableNo = arguments["tableNo"] as? String,
                    let quantity = arguments["quantity"] as? Int {
                     
+                    print("Printing data: Name: \(name), Table No: \(tableNo), Quantity: \(quantity)") // ログを追加
+                    
                     // データを使用して印刷処理を実行
-                    self.printFunction(result: result, name: name, tableNo: tableNo)
+                    self.printFunction(result: result, name: name, tableNo: tableNo, quantity: quantity)
                 } else {
                     result(FlutterError(code: "METHOD_CHANNEL_ERROR", message: "Invalid arguments", details: nil))
                 }
@@ -37,56 +40,56 @@ import StarIO10
                 result(FlutterMethodNotImplemented)
             }
         }
-        
+        GeneratedPluginRegistrant.register(with: self)
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
     // 印刷処理を行う関数
-    func printFunction(result: @escaping FlutterResult, name: String, tableNo: String) {
+    func printFunction(result: @escaping FlutterResult, name: String, tableNo: String, quantity: Int ) {
         let starConnectionSettings = StarConnectionSettings(interfaceType: .bluetooth, identifier: "2582322050600142")
         let printer = StarPrinter(starConnectionSettings)
         let builder = StarXpandCommand.StarXpandCommandBuilder()
-        
-        let command = builder.addDocument(StarXpandCommand.DocumentBuilder()
-            .addPrinter(
-                StarXpandCommand.PrinterBuilder()
-                    .styleBold(true)
-                    .actionPrintText("Item:   \(name)\n")
-                    .add(
-                        StarXpandCommand.PrinterBuilder()
-                            .styleMagnification(StarXpandCommand.MagnificationParameter(width: 1, height: 2))
-                            .actionPrintText("* \(tableNo) *\n")
-                    )
-                    .actionPrintText(
-                        "アンビエントナビ\n" +
-                        "モバイルオーダー\n" +
-                        "\n" +
-                        "Time:   2/2 0:30\n" +
-                        " 初稼働\n" +
-                        "\n" +
-                        "--------------------------------\n"
-                    )
-                    .add(
-                        StarXpandCommand.PrinterBuilder()
-                            .styleBold(true)
-                            .actionPrintText(">MOBILE<\n")
-                    )
-                    .actionPrintText("--------------------------------\n")
-                    .actionCut(.partial)
-            )
-        ).getCommands()
+        print(tableNo)
         
         Task {
             do {
+                let command = builder.addDocument(StarXpandCommand.DocumentBuilder()
+                    .addPrinter(
+                        StarXpandCommand.PrinterBuilder()
+                            .styleBold(true)
+                            .styleInternationalCharacter(.japan)
+                            .actionPrintText("Item:  \(name)\n")
+                            .add(
+                                StarXpandCommand.PrinterBuilder()
+                                    .styleMagnification(StarXpandCommand.MagnificationParameter(width: 1, height: 2))
+                                    .actionPrintText("* \(tableNo) *\n")
+                            )
+                            .actionPrintText(
+                                "アンビエントナビ\n" +
+                                "モバイルオーダー\n" +
+                                "\n" +
+                                "Time:   2/2 0:30\n" +
+                                " 初稼働\n" +
+                                "\n" +
+                                "--------------------------------\n"
+                            )
+                            .add(
+                                StarXpandCommand.PrinterBuilder()
+                                    .styleBold(true)
+                                    .actionPrintText(">MOBILE<\n")
+                            )
+                            .actionPrintText("--------------------------------\n")
+                            .actionCut(.partial)
+                    )
+                ).getCommands()
+
+                print("プリンタ接続直前！")
                 try await printer.open()
+                print("プリンタ接続成功！")
+                
                 defer {
-                    // 非同期でプリンターを閉じる
                     Task {
-                        do {
-                            try await printer.close()
-                        } catch {
-                            print("Error closing printer: \(error)")
-                        }
+                        await printer.close()
                     }
                 }
                 

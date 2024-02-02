@@ -55,27 +55,29 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
+    
     super.initState();
 
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
 
-    FirebaseFirestore.instance
-        .collection('ItemDetail')
-        .where('State', isEqualTo: 'Order')
-        .snapshots()
-        .listen((QuerySnapshot snapshot) {
-      for (final change in snapshot.docChanges) {
-        if (change.type == DocumentChangeType.added) {
-          final document = change.doc;
-          final name = document.get('name');
-          final tableNo = document.get('tableNo');
-          final quantity = document.get('quantity');
+   FirebaseFirestore.instance
+    .collection('ItemDetail')
+    .where('State', isEqualTo: 'Order')
+    .snapshots()
+    .listen((QuerySnapshot snapshot) {
+  snapshot.docChanges.forEach((change) {
+    if (change.type == DocumentChangeType.added) {
+      final document = change.doc;
+      final name = document.get('name');
+      final tableNo = document.get('tableNo');
+      final quantity = document.get('quantity');
 
-          _sendDataToSwift(name, tableNo, quantity);
-        }
-      }
-    });
+      _sendDataToSwift(name, tableNo, quantity);
+    }
+  });
+});
+
   }
 
   void _sendDataToSwift(String name, String tableNo, int quantity) {
