@@ -33,7 +33,7 @@ class _QRCodeState extends State<QRCode> {
     return QrImageView(
       data: '1234567890',
       version: QrVersions.auto,
-      size: qrSize,
+      //size: qrSize,
     );
   }
 }

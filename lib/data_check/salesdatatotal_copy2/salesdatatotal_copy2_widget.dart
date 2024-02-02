@@ -607,7 +607,7 @@ class _SalesdatatotalCopy2WidgetState extends State<SalesdatatotalCopy2Widget> {
                                                   label.key %
                                                       chartPieChartColorsList
                                                           .length],
-                                              label.value,
+                                              label.value as String,
                                             ),
                                           )
                                           .toList(),
