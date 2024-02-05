@@ -12,11 +12,12 @@ import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
+import 'dart:async'; // 非同期のためのimport
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
-  
+
   // Firebaseの初期化
   await initFirebase();
 
@@ -30,7 +31,7 @@ void main() async {
     ChangeNotifierProvider(
       create: (context) => appState,
       child: MyApp(methodChannel: methodChannel),
-    )
+    ),
   );
 }
 
@@ -55,39 +56,51 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    
     super.initState();
 
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
 
-   FirebaseFirestore.instance
-    .collection('ItemDetail')
-    .where('State', isEqualTo: 'Order')
-    .snapshots()
-    .listen((QuerySnapshot snapshot) {
-  snapshot.docChanges.forEach((change) {
-    if (change.type == DocumentChangeType.added) {
-      final document = change.doc;
-      final name = document.get('name');
-      final tableNo = document.get('tableNo');
-      final quantity = document.get('quantity');
-
-      _sendDataToSwift(name, tableNo, quantity);
-    }
-  });
-});
-
+    // ウィジェットの初期化中に非同期処理を実行することはできないため、
+    // initState内で直接非同期関数を呼び出すことはできません。
+    // そのため、非同期処理を別のメソッドに移動します。
+    _initializeFirestoreListener();
   }
 
-  void _sendDataToSwift(String name, String tableNo, int quantity) {
+  // Firestoreのリスナーを初期化するメソッド
+  void _initializeFirestoreListener() async {
+  await for (var snapshot in FirebaseFirestore.instance
+      .collection('ItemDetail')
+      .where('State', isEqualTo: 'Order')
+      .snapshots()) {
+    for (var change in snapshot.docChanges) {
+      if (change.type == DocumentChangeType.added) {
+        final document = change.doc;
+        final name = document.get('name');
+        final tableNo = document.get('tableNo');
+        final quantity = document.get('quantity');
+
+        await _sendDataToSwift(name, tableNo, quantity);
+      }
+    }
+  }
+}
+
+  // Swiftにデータを送信する非同期メソッド
+  Future<void> _sendDataToSwift(
+      String name, String tableNo, int quantity) async {
     try {
-      widget.methodChannel.invokeMethod('sendPrintData', {
-        'name': name,
-        'tableNo': tableNo,
-        'quantity': quantity,
-      });
+      final String result = await widget.methodChannel.invokeMethod(
+        'sendPrintData',
+        {
+          'name': name,
+          'tableNo': tableNo,
+          'quantity': quantity,
+        },
+      );
+      print('Result from Swift: $result');
     } on PlatformException catch (e) {
+      // エラーが発生した場合の処理
       print("Failed to send data to Swift: '${e.message}'.");
     }
   }

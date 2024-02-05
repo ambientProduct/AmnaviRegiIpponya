@@ -5,7 +5,7 @@ import StarIO10
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
     private var methodChannel: FlutterMethodChannel?
-    
+
     override func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -32,7 +32,7 @@ import StarIO10
                     print("Printing data: Name: \(name), Table No: \(tableNo), Quantity: \(quantity)") // ログを追加
                     
                     // データを使用して印刷処理を実行
-                    self.printFunction(result: result, name: name, tableNo: tableNo, quantity: quantity)
+                   self.printFunction(result: result, name: name, tableNo: tableNo, quantity: quantity)
                 } else {
                     result(FlutterError(code: "METHOD_CHANNEL_ERROR", message: "Invalid arguments", details: nil))
                 }
@@ -50,10 +50,7 @@ import StarIO10
         let printer = StarPrinter(starConnectionSettings)
         let builder = StarXpandCommand.StarXpandCommandBuilder()
         print(tableNo)
-        
-        Task {
-            do {
-                let command = builder.addDocument(StarXpandCommand.DocumentBuilder()
+        let command = builder.addDocument(StarXpandCommand.DocumentBuilder()
                     .addPrinter(
                         StarXpandCommand.PrinterBuilder()
                             .styleBold(true)
@@ -68,7 +65,7 @@ import StarIO10
                                 "アンビエントナビ\n" +
                                 "モバイルオーダー\n" +
                                 "\n" +
-                                "Time:   2/2 0:30\n" +
+                                "Time:   2/3 17:00\n" +
                                 " 初稼働\n" +
                                 "\n" +
                                 "--------------------------------\n"
@@ -82,6 +79,10 @@ import StarIO10
                             .actionCut(.partial)
                     )
                 ).getCommands()
+        
+        Task {
+            do {
+                
 
                 print("プリンタ接続直前！")
                 try await printer.open()

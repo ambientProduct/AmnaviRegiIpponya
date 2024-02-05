@@ -74,7 +74,7 @@
 	<false/>
 	<key>UISupportedExternalAccessoryProtocols</key>
 	<array>
-		<string>jp.star-m.starpro </string>
+		<string>jp.star-m.starpro</string>
 	</array>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>for print</string>
@@ -82,5 +82,7 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Use Local Network for communication with the printer or discovery the printers.</string>
 </dict>
 </plist>
