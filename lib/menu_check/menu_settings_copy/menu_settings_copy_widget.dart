@@ -1,15 +1,18 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/upload_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'menu_settings_model.dart';
-export 'menu_settings_model.dart';
+import 'menu_settings_copy_model.dart';
+export 'menu_settings_copy_model.dart';
 
-class MenuSettingsWidget extends StatefulWidget {
-  const MenuSettingsWidget({
+class MenuSettingsCopyWidget extends StatefulWidget {
+  const MenuSettingsCopyWidget({
     super.key,
     String? name,
   }) : this.name = name ?? 'Error';
@@ -17,18 +20,18 @@ class MenuSettingsWidget extends StatefulWidget {
   final String name;
 
   @override
-  State<MenuSettingsWidget> createState() => _MenuSettingsWidgetState();
+  State<MenuSettingsCopyWidget> createState() => _MenuSettingsCopyWidgetState();
 }
 
-class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
-  late MenuSettingsModel _model;
+class _MenuSettingsCopyWidgetState extends State<MenuSettingsCopyWidget> {
+  late MenuSettingsCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => MenuSettingsModel());
+    _model = createModel(context, () => MenuSettingsCopyModel());
 
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
@@ -45,15 +48,21 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
     _model.textController5 ??= TextEditingController();
     _model.textFieldFocusNode5 ??= FocusNode();
 
+    _model.textController6 ??= TextEditingController();
+    _model.textFieldFocusNode6 ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.textController1?.text = FFLocalizations.of(context).getText(
-            'pc9kgg75' /* 商品名を入力してください */,
+            '5apgq396' /* 商品名を入力してください */,
+          );
+          _model.textController3?.text = FFLocalizations.of(context).getText(
+            'lz9a8zbj' /* 価格を入力してください */,
           );
           _model.textController4?.text = FFLocalizations.of(context).getText(
-            '3gv881rz' /* 商品名を入力してください */,
+            'hixt35ww' /* 商品名を入力してください */,
           );
           _model.textController5?.text = FFLocalizations.of(context).getText(
-            'pzqar71m' /* 商品名を入力してください */,
+            'mvvfg0ma' /* 商品名を入力してください */,
           );
         }));
   }
@@ -317,7 +326,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                 Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'd1xuzpgn' /* 日本語 */,
+                                                    '5ef73p0k' /* 日本語 */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -341,7 +350,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      '7pfz8wjz' /* 英語翻訳 */,
+                                                      '7qou9c93' /* 英語翻訳 */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -363,7 +372,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'hwsj336x' /* 中国語翻訳 */,
+                                                      'sfasyqij' /* 中国語翻訳 */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -385,7 +394,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      '5ncbg5c9' /* 韓国語翻訳 */,
+                                                      '1sy2b6xr' /* 韓国語翻訳 */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -421,7 +430,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   60.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              'jmewo4xs' /* 商品名 */,
+                                              'z2pwn8af' /* 商品名 */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -455,7 +464,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'y8op2xix' /* Label here... */,
+                                                    'q95pakay' /* カテゴリーを入力してください */,
                                                   ),
                                                   labelStyle:
                                                       FlutterFlowTheme.of(
@@ -558,7 +567,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   60.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              'lqmuxlem' /* カテゴリー */,
+                                              'e89pasl1' /* カテゴリー */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -592,7 +601,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'sz4xziix' /* 商品説明を入力してください（任意） */,
+                                                    '2hscnlck' /* カテゴリーを入力してください */,
                                                   ),
                                                   labelStyle:
                                                       FlutterFlowTheme.of(
@@ -695,7 +704,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   60.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              'ayz1ut3v' /* 価格（￥） */,
+                                              '2tgdywjs' /* 価格（￥） */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -729,7 +738,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'o2a1s4ie' /* 価格を入力してください */,
+                                                    'udae53ba' /* 価格を入力してください */,
                                                   ),
                                                   labelStyle:
                                                       FlutterFlowTheme.of(
@@ -832,7 +841,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   60.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              '25y6708l' /* 割引（￥） */,
+                                              'lp6kagq6' /* 割引（￥） */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -866,7 +875,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'm5mczvp4' /* Label here... */,
+                                                    'vzjpw3ax' /* Label here... */,
                                                   ),
                                                   labelStyle:
                                                       FlutterFlowTheme.of(
@@ -969,7 +978,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   60.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              'n8kbux1j' /* 原価 */,
+                                              '7d7gbz9e' /* 原価 */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1000,7 +1009,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'ga68ix18' /* Label here... */,
+                                                    'wn0lwqha' /* Label here... */,
                                                   ),
                                                   labelStyle:
                                                       FlutterFlowTheme.of(
@@ -1103,7 +1112,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   60.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              'vm2f0486' /* 消費税設定 */,
+                                              'n5s9tzdr' /* 消費税設定 */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1138,7 +1147,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'ggp1in1g' /* 税込 */,
+                                                  'ne5tf66k' /* 税込 */,
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -1178,7 +1187,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  '5nlgd90n' /* 税抜 */,
+                                                  'p9twldnb' /* 税抜 */,
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -1218,7 +1227,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   60.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              '0nboddzi' /* 税率 */,
+                                              'xyb1uuuh' /* 税率 */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1239,7 +1248,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   0.0, 0.0, 60.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              'xff0pkls' /* 10%（標準） */,
+                                              'd4e0knha' /* 10%（標準） */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1275,7 +1284,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   60.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              '9bau269o' /* メニュー表示 */,
+                                              'edwyxlm8' /* メニュー表示 */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1310,7 +1319,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'gyoz8xlu' /* 店内表示 */,
+                                                  'q5fsp9ip' /* 店内表示 */,
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -1350,7 +1359,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'dni9cbr8' /* 店内非表示 */,
+                                                  'r7uarv8n' /* 店内非表示 */,
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -1390,7 +1399,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   60.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              'ebztq9bn' /* アルコール商品設定 */,
+                                              '6mp4enjy' /* アルコール商品設定 */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1425,7 +1434,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'isqgmy8l' /* アルコールあり */,
+                                                  'esh8z2xq' /* アルコールあり */,
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -1465,7 +1474,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'kozfhev1' /* アルコールなし */,
+                                                  '5pzzqqz3' /* アルコールなし */,
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -1505,7 +1514,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   60.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              '3q6vpdmc' /* オプション */,
+                                              'vsm0qu10' /* オプション */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1526,7 +1535,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   0.0, 0.0, 60.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              '63c0l7jg' /* ＋オプションを追加 */,
+                                              'f2sjkrac' /* ＋オプションを追加 */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1562,7 +1571,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   60.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              'xv5m9oq0' /* 画像 */,
+                                              'mhvramkg' /* 画像 */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1581,14 +1590,148 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 60.0, 0.0),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            child: Image.network(
-                                              'https://picsum.photos/seed/196/600',
-                                              width: 50.0,
-                                              height: 50.0,
-                                              fit: BoxFit.cover,
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              final selectedMedia =
+                                                  await selectMedia(
+                                                mediaSource:
+                                                    MediaSource.photoGallery,
+                                                multiImage: false,
+                                              );
+                                              if (selectedMedia != null &&
+                                                  selectedMedia.every((m) =>
+                                                      validateFileFormat(
+                                                          m.storagePath,
+                                                          context))) {
+                                                setState(() => _model
+                                                    .isDataUploading1 = true);
+                                                var selectedUploadedFiles =
+                                                    <FFUploadedFile>[];
+
+                                                try {
+                                                  selectedUploadedFiles =
+                                                      selectedMedia
+                                                          .map((m) =>
+                                                              FFUploadedFile(
+                                                                name: m
+                                                                    .storagePath
+                                                                    .split('/')
+                                                                    .last,
+                                                                bytes: m.bytes,
+                                                                height: m
+                                                                    .dimensions
+                                                                    ?.height,
+                                                                width: m
+                                                                    .dimensions
+                                                                    ?.width,
+                                                                blurHash:
+                                                                    m.blurHash,
+                                                              ))
+                                                          .toList();
+                                                } finally {
+                                                  _model.isDataUploading1 =
+                                                      false;
+                                                }
+                                                if (selectedUploadedFiles
+                                                        .length ==
+                                                    selectedMedia.length) {
+                                                  setState(() {
+                                                    _model.uploadedLocalFile1 =
+                                                        selectedUploadedFiles
+                                                            .first;
+                                                  });
+                                                } else {
+                                                  setState(() {});
+                                                  return;
+                                                }
+                                              }
+                                            },
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: Image.network(
+                                                'https://picsum.photos/seed/196/600',
+                                                width: 50.0,
+                                                height: 50.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 60.0, 0.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              final selectedMedia =
+                                                  await selectMedia(
+                                                mediaSource:
+                                                    MediaSource.photoGallery,
+                                                multiImage: false,
+                                              );
+                                              if (selectedMedia != null &&
+                                                  selectedMedia.every((m) =>
+                                                      validateFileFormat(
+                                                          m.storagePath,
+                                                          context))) {
+                                                setState(() => _model
+                                                    .isDataUploading2 = true);
+                                                var selectedUploadedFiles =
+                                                    <FFUploadedFile>[];
+
+                                                try {
+                                                  selectedUploadedFiles =
+                                                      selectedMedia
+                                                          .map((m) =>
+                                                              FFUploadedFile(
+                                                                name: m
+                                                                    .storagePath
+                                                                    .split('/')
+                                                                    .last,
+                                                                bytes: m.bytes,
+                                                                height: m
+                                                                    .dimensions
+                                                                    ?.height,
+                                                                width: m
+                                                                    .dimensions
+                                                                    ?.width,
+                                                                blurHash:
+                                                                    m.blurHash,
+                                                              ))
+                                                          .toList();
+                                                } finally {
+                                                  _model.isDataUploading2 =
+                                                      false;
+                                                }
+                                                if (selectedUploadedFiles
+                                                        .length ==
+                                                    selectedMedia.length) {
+                                                  setState(() {
+                                                    _model.uploadedLocalFile2 =
+                                                        selectedUploadedFiles
+                                                            .first;
+                                                  });
+                                                } else {
+                                                  setState(() {});
+                                                  return;
+                                                }
+                                              }
+                                            },
+                                            child: Icon(
+                                              Icons.settings_outlined,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 24.0,
                                             ),
                                           ),
                                         ),
@@ -1614,7 +1757,7 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                                   60.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              'l57alvno' /* 商品説明 */,
+                                              '9yx60i4l' /* 商品説明 */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1650,20 +1793,76 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            15.0, 15.0, 0.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'akkw0ipl' /* 商品説明を入力してください（任意） */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Helvetica',
+                                            8.0, 0.0, 8.0, 0.0),
+                                        child: TextFormField(
+                                          controller: _model.textController6,
+                                          focusNode: _model.textFieldFocusNode6,
+                                          autofocus: true,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'rqgjvlx4' /* 商品説明を入力してください（任意） */,
+                                            ),
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'gkrjwkfm' /* 商品説明を入力してください（任意） */,
+                                            ),
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
+                                            enabledBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .subBlack2,
-                                                useGoogleFonts: false,
+                                                        .alternate,
+                                                width: 2.0,
                                               ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            focusedBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            errorBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                          validator: _model
+                                              .textController6Validator
+                                              .asValidator(context),
                                         ),
                                       ),
                                     ),
@@ -1681,11 +1880,19 @@ class _MenuSettingsWidgetState extends State<MenuSettingsWidget> {
                     child: Stack(
                       children: [
                         FFButtonWidget(
-                          onPressed: () {
-                            print('Button pressed ...');
+                          onPressed: () async {
+                            await MenuItemsRecord.collection
+                                .doc()
+                                .set(createMenuItemsRecordData(
+                                  name: _model.textController1.text,
+                                  description: _model.textController6.text,
+                                  price: double.tryParse(
+                                      _model.textController3.text),
+                                  category: _model.textController2.text,
+                                ));
                           },
                           text: FFLocalizations.of(context).getText(
-                            'oc8axmum' /* 保存する */,
+                            'jg5vus95' /* 保存する */,
                           ),
                           options: FFButtonOptions(
                             width: 1005.0,

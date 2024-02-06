@@ -409,8 +409,19 @@ class _CompletedOrdersWidgetState extends State<CompletedOrdersWidget> {
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   30.0, 0.0, 30.0, 0.0),
-                              child: StreamBuilder<List<UsersRecord>>(
-                                stream: queryUsersRecord(),
+                              child: StreamBuilder<List<ItemDetailRecord>>(
+                                stream: queryItemDetailRecord(
+                                  queryBuilder: (itemDetailRecord) =>
+                                      itemDetailRecord
+                                          .where(
+                                            'State',
+                                            isEqualTo: 'Order',
+                                          )
+                                          .where(
+                                            'Served',
+                                            isEqualTo: true,
+                                          ),
+                                ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
@@ -428,23 +439,25 @@ class _CompletedOrdersWidgetState extends State<CompletedOrdersWidget> {
                                       ),
                                     );
                                   }
-                                  List<UsersRecord> listViewUsersRecordList =
+                                  List<ItemDetailRecord>
+                                      listViewItemDetailRecordList =
                                       snapshot.data!;
                                   return ListView.builder(
                                     padding: EdgeInsets.zero,
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
-                                    itemCount: listViewUsersRecordList.length,
+                                    itemCount:
+                                        listViewItemDetailRecordList.length,
                                     itemBuilder: (context, listViewIndex) {
-                                      final listViewUsersRecord =
-                                          listViewUsersRecordList[
+                                      final listViewItemDetailRecord =
+                                          listViewItemDetailRecordList[
                                               listViewIndex];
                                       return Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 15.0, 0.0, 0.0),
                                         child: Container(
                                           width: 500.0,
-                                          height: 100.0,
+                                          height: 120.0,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
@@ -482,7 +495,7 @@ class _CompletedOrdersWidgetState extends State<CompletedOrdersWidget> {
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          'h43n9lqk' /* テーブル T5 */,
+                                                          '1nobm3zd' /* テーブル */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -504,16 +517,21 @@ class _CompletedOrdersWidgetState extends State<CompletedOrdersWidget> {
                                                                 ),
                                                       ),
                                                     ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'hszsrq5n' /* 点数： */,
-                                                          ),
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    70.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          listViewItemDetailRecord
+                                                              .tableNo,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -523,48 +541,15 @@ class _CompletedOrdersWidgetState extends State<CompletedOrdersWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .subBlack,
-                                                                fontSize: 15.0,
+                                                                fontSize: 20.0,
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .normal,
+                                                                        .w600,
                                                                 useGoogleFonts:
                                                                     false,
                                                               ),
                                                         ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      5.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'oxm7ur1v' /* 15 */,
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Helvetica',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .subBlack,
-                                                                  fontSize:
-                                                                      15.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                  useGoogleFonts:
-                                                                      false,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ],
+                                                      ),
                                                     ),
                                                     Padding(
                                                       padding:
@@ -578,7 +563,7 @@ class _CompletedOrdersWidgetState extends State<CompletedOrdersWidget> {
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          '4wm4ylc2' /* 21:00 */,
+                                                          'qbty22rf' /* 21:00 */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -596,6 +581,122 @@ class _CompletedOrdersWidgetState extends State<CompletedOrdersWidget> {
                                                                       false,
                                                                 ),
                                                       ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        30.0, 15.0, 30.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Text(
+                                                      listViewItemDetailRecord
+                                                          .name,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Helvetica',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .subBlack2,
+                                                                fontSize: 15.0,
+                                                                useGoogleFonts:
+                                                                    false,
+                                                              ),
+                                                    ),
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'afkyq91x' /* 点数： */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Helvetica',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .subBlack2,
+                                                                fontSize: 15.0,
+                                                                useGoogleFonts:
+                                                                    false,
+                                                              ),
+                                                        ),
+                                                        Text(
+                                                          listViewItemDetailRecord
+                                                              .quantity
+                                                              .toString(),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Helvetica',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .subBlack2,
+                                                                fontSize: 15.0,
+                                                                useGoogleFonts:
+                                                                    false,
+                                                              ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Text(
+                                                      listViewItemDetailRecord
+                                                          .modifire,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Helvetica',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .subBlack2,
+                                                                fontSize: 15.0,
+                                                                useGoogleFonts:
+                                                                    false,
+                                                              ),
+                                                    ),
+                                                    Text(
+                                                      valueOrDefault<String>(
+                                                        listViewItemDetailRecord
+                                                            .orderTime
+                                                            ?.toString(),
+                                                        'Error',
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Helvetica',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .subBlack2,
+                                                                fontSize: 15.0,
+                                                                useGoogleFonts:
+                                                                    false,
+                                                              ),
                                                     ),
                                                   ],
                                                 ),

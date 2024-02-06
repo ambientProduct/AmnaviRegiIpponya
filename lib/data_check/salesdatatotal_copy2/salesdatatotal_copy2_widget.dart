@@ -570,8 +570,13 @@ class _SalesdatatotalCopy2WidgetState extends State<SalesdatatotalCopy2Widget> {
                                     data: FFPieChartData(
                                       values: List.generate(
                                           random_data.randomInteger(0, 0),
-                                          (index) => random_data.randomInteger(
-                                              0, 200000)),
+                                          (index) => random_data.randomString(
+                                                0,
+                                                0,
+                                                true,
+                                                false,
+                                                false,
+                                              )),
                                       colors: chartPieChartColorsList,
                                       radius: [150.0],
                                       borderColor: [Color(0xFFCBD1D5)],
@@ -597,8 +602,14 @@ class _SalesdatatotalCopy2WidgetState extends State<SalesdatatotalCopy2Widget> {
                                     child: FlutterFlowChartLegendWidget(
                                       entries: List.generate(
                                               random_data.randomInteger(0, 0),
-                                              (index) => random_data
-                                                  .randomInteger(01, 31))
+                                              (index) =>
+                                                  random_data.randomString(
+                                                    0,
+                                                    0,
+                                                    true,
+                                                    false,
+                                                    false,
+                                                  ))
                                           .asMap()
                                           .entries
                                           .map(
@@ -607,7 +618,7 @@ class _SalesdatatotalCopy2WidgetState extends State<SalesdatatotalCopy2Widget> {
                                                   label.key %
                                                       chartPieChartColorsList
                                                           .length],
-                                              label.value as String,
+                                              label.value,
                                             ),
                                           )
                                           .toList(),

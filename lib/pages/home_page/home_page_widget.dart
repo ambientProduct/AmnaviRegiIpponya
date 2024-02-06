@@ -85,7 +85,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                           ),
                           child: Column(
-                            mainAxisSize: MainAxisSize.max,
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               Align(
                                 alignment: AlignmentDirectional(-1.0, 0.0),
@@ -953,7 +953,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(39.0, 0.0, 0.0, 0.0),
                   child: Container(
                     width: 75.0,
                     height: 765.0,

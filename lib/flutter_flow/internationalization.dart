@@ -277,16 +277,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': 'カテゴリー',
       'en': '',
     },
-    'og1sjvbq': {
-      'ja': '商品名',
-      'en': '',
-    },
     'f6gzzui1': {
       'ja': '¥',
-      'en': '',
-    },
-    'vz71ii1n': {
-      'ja': '390',
       'en': '',
     },
     'uw41podd': {
@@ -375,7 +367,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '商品名',
       'en': '',
     },
-    '0t96iwfe': {
+    'y8op2xix': {
+      'ja': 'Label here...',
+      'en': '',
+    },
+    'pc9kgg75': {
       'ja': '商品名を入力してください',
       'en': '',
     },
@@ -383,32 +379,40 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': 'カテゴリー',
       'en': '',
     },
-    'y0e8zy5t': {
-      'ja': '商品名を入力してください',
+    'sz4xziix': {
+      'ja': '商品説明を入力してください（任意）',
       'en': '',
     },
     'ayz1ut3v': {
       'ja': '価格（￥）',
       'en': '',
     },
-    'r5fe0eht': {
-      'ja': '0以上の生整数を設定してください（必須）',
+    'o2a1s4ie': {
+      'ja': '価格を入力してください',
       'en': '',
     },
     '25y6708l': {
       'ja': '割引（￥）',
       'en': '',
     },
-    'iwd6qw45': {
-      'ja': '0以上の生整数を設定してください（任意）',
+    'm5mczvp4': {
+      'ja': 'Label here...',
+      'en': '',
+    },
+    '3gv881rz': {
+      'ja': '商品名を入力してください',
       'en': '',
     },
     'n8kbux1j': {
       'ja': '原価',
       'en': '',
     },
-    'qzawlqd1': {
-      'ja': '0以上の生整数を設定してください（必須）',
+    'ga68ix18': {
+      'ja': 'Label here...',
+      'en': '',
+    },
+    'pzqar71m': {
+      'ja': '商品名を入力してください',
       'en': '',
     },
     'vm2f0486': {
@@ -1887,42 +1891,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '清算',
       'en': '',
     },
-    'gxvf3bj1': {
-      'ja': 'test',
-      'en': '',
-    },
-    'mc4vrxax': {
-      'ja': 'T1',
-      'en': '',
-    },
-    'i6k3pnp1': {
-      'ja': 'T1',
-      'en': '',
-    },
-    'jpx35lcm': {
-      'ja': 'T1',
-      'en': '',
-    },
-    'tz1y9a6y': {
-      'ja': 'T1',
-      'en': '',
-    },
-    'i09mq370': {
-      'ja': 'T1',
-      'en': '',
-    },
-    '82irayiw': {
-      'ja': 'T1',
-      'en': '',
-    },
-    'lzv3u1gk': {
-      'ja': 'T1',
-      'en': '',
-    },
-    '5qwikw1e': {
-      'ja': 'T1',
-      'en': '',
-    },
     'doltbwfz': {
       'ja': '一本屋トヨタ店',
       'en': '',
@@ -1937,14 +1905,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'zwcg5avv': {
       'ja': '番号numbers0000000',
-      'en': '',
-    },
-    'o5q1o8g7': {
-      'ja': '包み牛タン',
-      'en': '',
-    },
-    'v5jd4cdx': {
-      'ja': '1',
       'en': '',
     },
     '7fnjk8yi': {
@@ -1991,10 +1951,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '1,290',
       'en': '',
     },
-    'zdkk6biy': {
-      'ja': 'test',
-      'en': '',
-    },
     'l8a1ejum': {
       'ja': '＋',
       'en': '',
@@ -2003,20 +1959,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '商品別会計',
       'en': '',
     },
-    'r22gkh7r': {
-      'ja': '商品名位いいい',
-      'en': '',
-    },
     '4tx4weq6': {
       'ja': '¥',
-      'en': '',
-    },
-    'r056ygti': {
-      'ja': '390',
-      'en': '',
-    },
-    '50cuzuov': {
-      'ja': '1',
       'en': '',
     },
     '58xp63q8': {
@@ -2936,20 +2880,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '予約注文管理',
       'en': '',
     },
-    'h43n9lqk': {
-      'ja': 'テーブル T5',
+    '1nobm3zd': {
+      'ja': 'テーブル',
       'en': '',
     },
-    'hszsrq5n': {
-      'ja': '点数：',
-      'en': '',
-    },
-    'oxm7ur1v': {
-      'ja': '15',
-      'en': '',
-    },
-    '4wm4ylc2': {
+    'qbty22rf': {
       'ja': '21:00',
+      'en': '',
+    },
+    'afkyq91x': {
+      'ja': '点数：',
       'en': '',
     },
     'pkbtmtpk': {
@@ -2999,60 +2939,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '予約注文管理',
       'en': '',
     },
-    't4ew8u43': {
-      'ja': 'test',
-      'en': '',
-    },
-    'egfw59gr': {
-      'ja': 'T1',
-      'en': '',
-    },
-    'awnp3eal': {
-      'ja': 'T1',
-      'en': '',
-    },
-    'qc3jxam0': {
-      'ja': 'T1',
-      'en': '',
-    },
-    'a8h0p24q': {
-      'ja': 'T1',
-      'en': '',
-    },
-    'enln6ss2': {
-      'ja': 'T1',
-      'en': '',
-    },
-    'm5fh0o2f': {
-      'ja': 'T1',
-      'en': '',
-    },
-    's3nevbsz': {
-      'ja': 'T1',
-      'en': '',
-    },
-    'w7rh8d1a': {
-      'ja': 'T1',
-      'en': '',
-    },
     'kq7wxqif': {
       'ja': '新規',
       'en': '',
     },
-    '0tut4twp': {
-      'ja': 'test',
-      'en': '',
-    },
     'twqvoalp': {
       'ja': '13:32',
-      'en': '',
-    },
-    'i95hw1ct': {
-      'ja': '生塩牛タン',
-      'en': '',
-    },
-    'kkhy3cfb': {
-      'ja': '1',
       'en': '',
     },
     'i2l1hloo': {
@@ -3078,47 +2970,162 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '予約注文管理',
       'en': '',
     },
-    'me99rrye': {
-      'ja': 'test',
-      'en': '',
-    },
-    'l24wn7eo': {
-      'ja': 'T1',
-      'en': '',
-    },
-    'z1k1eo0t': {
-      'ja': 'T1',
-      'en': '',
-    },
-    'u8tvy6u6': {
-      'ja': 'T1',
-      'en': '',
-    },
-    '69k00oe9': {
-      'ja': 'T1',
-      'en': '',
-    },
-    '6o2hc1nw': {
-      'ja': 'T1',
-      'en': '',
-    },
-    'aav1b5vm': {
-      'ja': 'T1',
-      'en': '',
-    },
-    'tbzrnxwn': {
-      'ja': 'T1',
-      'en': '',
-    },
-    '2rjw2n92': {
-      'ja': 'T1',
-      'en': '',
-    },
     'xo3yndkh': {
       'ja': '注文がありません',
       'en': '',
     },
     'pluzvep0': {
+      'ja': 'Home',
+      'en': '',
+    },
+  },
+  // MenuSettingsCopy
+  {
+    '5ef73p0k': {
+      'ja': '日本語',
+      'en': '',
+    },
+    '7qou9c93': {
+      'ja': '英語翻訳',
+      'en': '',
+    },
+    'sfasyqij': {
+      'ja': '中国語翻訳',
+      'en': '',
+    },
+    '1sy2b6xr': {
+      'ja': '韓国語翻訳',
+      'en': '',
+    },
+    'z2pwn8af': {
+      'ja': '商品名',
+      'en': '',
+    },
+    'q95pakay': {
+      'ja': 'カテゴリーを入力してください',
+      'en': '',
+    },
+    '5apgq396': {
+      'ja': '商品名を入力してください',
+      'en': '',
+    },
+    'e89pasl1': {
+      'ja': 'カテゴリー',
+      'en': '',
+    },
+    '2hscnlck': {
+      'ja': 'カテゴリーを入力してください',
+      'en': '',
+    },
+    '2tgdywjs': {
+      'ja': '価格（￥）',
+      'en': '',
+    },
+    'udae53ba': {
+      'ja': '価格を入力してください',
+      'en': '',
+    },
+    'lz9a8zbj': {
+      'ja': '価格を入力してください',
+      'en': '',
+    },
+    'lp6kagq6': {
+      'ja': '割引（￥）',
+      'en': '',
+    },
+    'vzjpw3ax': {
+      'ja': 'Label here...',
+      'en': '',
+    },
+    'hixt35ww': {
+      'ja': '商品名を入力してください',
+      'en': '',
+    },
+    '7d7gbz9e': {
+      'ja': '原価',
+      'en': '',
+    },
+    'wn0lwqha': {
+      'ja': 'Label here...',
+      'en': '',
+    },
+    'mvvfg0ma': {
+      'ja': '商品名を入力してください',
+      'en': '',
+    },
+    'n5s9tzdr': {
+      'ja': '消費税設定',
+      'en': '',
+    },
+    'ne5tf66k': {
+      'ja': '税込',
+      'en': '',
+    },
+    'p9twldnb': {
+      'ja': '税抜',
+      'en': '',
+    },
+    'xyb1uuuh': {
+      'ja': '税率',
+      'en': '',
+    },
+    'd4e0knha': {
+      'ja': '10%（標準）',
+      'en': '',
+    },
+    'edwyxlm8': {
+      'ja': 'メニュー表示',
+      'en': '',
+    },
+    'q5fsp9ip': {
+      'ja': '店内表示',
+      'en': '',
+    },
+    'r7uarv8n': {
+      'ja': '店内非表示',
+      'en': '',
+    },
+    '6mp4enjy': {
+      'ja': 'アルコール商品設定',
+      'en': '',
+    },
+    'esh8z2xq': {
+      'ja': 'アルコールあり',
+      'en': '',
+    },
+    '5pzzqqz3': {
+      'ja': 'アルコールなし',
+      'en': '',
+    },
+    'vsm0qu10': {
+      'ja': 'オプション',
+      'en': '',
+    },
+    'f2sjkrac': {
+      'ja': '＋オプションを追加',
+      'en': '',
+    },
+    'mhvramkg': {
+      'ja': '画像',
+      'en': '',
+    },
+    '9yx60i4l': {
+      'ja': '商品説明',
+      'en': '',
+    },
+    'rqgjvlx4': {
+      'ja': '商品説明を入力してください（任意）',
+      'en': '',
+    },
+    'gkrjwkfm': {
+      'ja': '商品説明を入力してください（任意）',
+      'en': '',
+    },
+    'jg5vus95': {
+      'ja': '保存する',
+      'en': '',
+    },
+    'qa37jhzn': {
       'ja': 'Home',
       'en': '',
     },
@@ -3196,7 +3203,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     '2a6e7ie5': {
-      'ja': '1880',
+      'ja': '',
       'en': '',
     },
     'cvsg22ym': {
@@ -3212,7 +3219,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     '9ytnyzo4': {
-      'ja': '1000',
+      'ja': '99999',
       'en': '',
     },
     '0vdap8zs': {

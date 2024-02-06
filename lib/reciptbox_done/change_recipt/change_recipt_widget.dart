@@ -2064,7 +2064,9 @@ class _ChangeReciptWidgetState extends State<ChangeReciptWidget> {
                                                           height: 570.0,
                                                           width: 800.0,
                                                           child:
-                                                              PayComponentWidget(),
+                                                              PayComponentWidget(
+                                                            tableno: '',
+                                                          ),
                                                         ),
                                                       ),
                                                     );

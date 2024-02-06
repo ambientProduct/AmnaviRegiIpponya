@@ -1,13 +1,16 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'menu_settings_widget.dart' show MenuSettingsWidget;
+import '/flutter_flow/upload_data.dart';
+import 'menu_settings_copy_widget.dart' show MenuSettingsCopyWidget;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class MenuSettingsModel extends FlutterFlowModel<MenuSettingsWidget> {
+class MenuSettingsCopyModel extends FlutterFlowModel<MenuSettingsCopyWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -31,6 +34,18 @@ class MenuSettingsModel extends FlutterFlowModel<MenuSettingsWidget> {
   FocusNode? textFieldFocusNode5;
   TextEditingController? textController5;
   String? Function(BuildContext, String?)? textController5Validator;
+  bool isDataUploading1 = false;
+  FFUploadedFile uploadedLocalFile1 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+
+  bool isDataUploading2 = false;
+  FFUploadedFile uploadedLocalFile2 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode6;
+  TextEditingController? textController6;
+  String? Function(BuildContext, String?)? textController6Validator;
 
   /// Initialization and disposal methods.
 
@@ -52,6 +67,9 @@ class MenuSettingsModel extends FlutterFlowModel<MenuSettingsWidget> {
 
     textFieldFocusNode5?.dispose();
     textController5?.dispose();
+
+    textFieldFocusNode6?.dispose();
+    textController6?.dispose();
   }
 
   /// Action blocks are added here.

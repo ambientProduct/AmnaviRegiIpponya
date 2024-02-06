@@ -1,6 +1,8 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/payment/otsuri/otsuri_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,7 +11,12 @@ import 'pay_component_model.dart';
 export 'pay_component_model.dart';
 
 class PayComponentWidget extends StatefulWidget {
-  const PayComponentWidget({super.key});
+  const PayComponentWidget({
+    super.key,
+    required this.tableno,
+  });
+
+  final String? tableno;
 
   @override
   State<PayComponentWidget> createState() => _PayComponentWidgetState();
@@ -187,7 +194,7 @@ class _PayComponentWidgetState extends State<PayComponentWidget> {
                                           0.0, 8.0, 15.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          '2a6e7ie5' /* 1880 */,
+                                          '2a6e7ie5' /*  */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -355,7 +362,7 @@ class _PayComponentWidgetState extends State<PayComponentWidget> {
                                         0.0, 0.0, 15.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        '9ytnyzo4' /* 1000 */,
+                                        '9ytnyzo4' /* 99999 */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -963,65 +970,83 @@ class _PayComponentWidgetState extends State<PayComponentWidget> {
                         ),
                       ),
                     ),
-                    Builder(
-                      builder: (context) => InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          await showDialog(
-                            context: context,
-                            builder: (dialogContext) {
-                              return Dialog(
-                                elevation: 0,
-                                insetPadding: EdgeInsets.zero,
-                                backgroundColor: Colors.transparent,
-                                alignment: AlignmentDirectional(0.0, 0.0)
-                                    .resolve(Directionality.of(context)),
-                                child: Container(
-                                  height: 570.0,
-                                  width: 800.0,
-                                  child: OtsuriWidget(),
-                                ),
-                              );
-                            },
-                          ).then((value) => setState(() {}));
-                        },
-                        child: Container(
-                          width: 200.0,
-                          height: 70.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).subBlack4,
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(0.0),
-                              bottomRight: Radius.circular(15.0),
-                              topLeft: Radius.circular(0.0),
-                              topRight: Radius.circular(0.0),
+                    StreamBuilder<List<ItemDetailRecord>>(
+                      stream: queryItemDetailRecord(
+                        queryBuilder: (itemDetailRecord) => itemDetailRecord
+                            .where(
+                              'tableNo',
+                              isEqualTo: widget.tableno,
+                            )
+                            .where(
+                              'State',
+                              isEqualTo: 'Served',
                             ),
-                            border: Border.all(
-                              color: FlutterFlowTheme.of(context).subBlack2,
-                            ),
-                          ),
-                          child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'jbg21pds' /* 会計する */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Helvetica',
-                                    color:
-                                        FlutterFlowTheme.of(context).subBlack,
-                                    fontSize: 20.0,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                          ),
-                        ),
                       ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  FlutterFlowTheme.of(context).primary,
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                        List<ItemDetailRecord> containerItemDetailRecordList =
+                            snapshot.data!;
+                        return InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            await actions.paymenttransaction(
+                              'ItemDetail',
+                              'State',
+                              'Order',
+                              'Paid',
+                            );
+                          },
+                          child: Container(
+                            width: 200.0,
+                            height: 70.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).subBlack4,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(0.0),
+                                bottomRight: Radius.circular(15.0),
+                                topLeft: Radius.circular(0.0),
+                                topRight: Radius.circular(0.0),
+                              ),
+                              border: Border.all(
+                                color: FlutterFlowTheme.of(context).subBlack2,
+                              ),
+                            ),
+                            child: Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'jbg21pds' /* 会計する */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Helvetica',
+                                      color:
+                                          FlutterFlowTheme.of(context).subBlack,
+                                      fontSize: 20.0,
+                                      useGoogleFonts: false,
+                                    ),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),

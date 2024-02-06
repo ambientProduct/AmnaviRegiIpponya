@@ -31,25 +31,10 @@ class MenuItemsRecord extends FirestoreRecord {
   double get price => _price ?? 0.0;
   bool hasPrice() => _price != null;
 
-  // "created_at" field.
-  DateTime? _createdAt;
-  DateTime? get createdAt => _createdAt;
-  bool hasCreatedAt() => _createdAt != null;
-
-  // "modified_at" field.
-  DateTime? _modifiedAt;
-  DateTime? get modifiedAt => _modifiedAt;
-  bool hasModifiedAt() => _modifiedAt != null;
-
   // "on_sale" field.
   bool? _onSale;
   bool get onSale => _onSale ?? false;
   bool hasOnSale() => _onSale != null;
-
-  // "sale_price" field.
-  double? _salePrice;
-  double get salePrice => _salePrice ?? 0.0;
-  bool hasSalePrice() => _salePrice != null;
 
   // "quantity" field.
   int? _quantity;
@@ -75,10 +60,7 @@ class MenuItemsRecord extends FirestoreRecord {
     _name = snapshotData['name'] as String?;
     _description = snapshotData['description'] as String?;
     _price = castToType<double>(snapshotData['price']);
-    _createdAt = snapshotData['created_at'] as DateTime?;
-    _modifiedAt = snapshotData['modified_at'] as DateTime?;
     _onSale = snapshotData['on_sale'] as bool?;
-    _salePrice = castToType<double>(snapshotData['sale_price']);
     _quantity = castToType<int>(snapshotData['quantity']);
     _productPhotos = snapshotData['ProductPhotos'] as String?;
     _modifires = getDataList(snapshotData['modifires']);
@@ -123,10 +105,7 @@ Map<String, dynamic> createMenuItemsRecordData({
   String? name,
   String? description,
   double? price,
-  DateTime? createdAt,
-  DateTime? modifiedAt,
   bool? onSale,
-  double? salePrice,
   int? quantity,
   String? productPhotos,
   String? category,
@@ -136,10 +115,7 @@ Map<String, dynamic> createMenuItemsRecordData({
       'name': name,
       'description': description,
       'price': price,
-      'created_at': createdAt,
-      'modified_at': modifiedAt,
       'on_sale': onSale,
-      'sale_price': salePrice,
       'quantity': quantity,
       'ProductPhotos': productPhotos,
       'category': category,
@@ -158,10 +134,7 @@ class MenuItemsRecordDocumentEquality implements Equality<MenuItemsRecord> {
     return e1?.name == e2?.name &&
         e1?.description == e2?.description &&
         e1?.price == e2?.price &&
-        e1?.createdAt == e2?.createdAt &&
-        e1?.modifiedAt == e2?.modifiedAt &&
         e1?.onSale == e2?.onSale &&
-        e1?.salePrice == e2?.salePrice &&
         e1?.quantity == e2?.quantity &&
         e1?.productPhotos == e2?.productPhotos &&
         listEquality.equals(e1?.modifires, e2?.modifires) &&
@@ -173,10 +146,7 @@ class MenuItemsRecordDocumentEquality implements Equality<MenuItemsRecord> {
         e?.name,
         e?.description,
         e?.price,
-        e?.createdAt,
-        e?.modifiedAt,
         e?.onSale,
-        e?.salePrice,
         e?.quantity,
         e?.productPhotos,
         e?.modifires,

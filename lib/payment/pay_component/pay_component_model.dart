@@ -1,6 +1,8 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/payment/otsuri/otsuri_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'pay_component_widget.dart' show PayComponentWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

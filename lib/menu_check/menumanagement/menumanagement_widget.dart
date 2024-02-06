@@ -305,7 +305,7 @@ class _MenumanagementWidgetState extends State<MenumanagementWidget> {
                                     75.0, 0.0, 75.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    context.pushNamed('MenuSettings');
+                                    context.pushNamed('MenuSettingsCopy');
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     'f8shj6wr' /* 商品追加 */,
@@ -652,7 +652,8 @@ class _MenumanagementWidgetState extends State<MenumanagementWidget> {
                                           borderRadius:
                                               BorderRadius.circular(8.0),
                                           child: Image.network(
-                                            'https://picsum.photos/seed/381/600',
+                                            listViewMenuItemsRecord
+                                                .productPhotos,
                                             width: 80.0,
                                             height: 80.0,
                                             fit: BoxFit.cover,
@@ -674,10 +675,7 @@ class _MenumanagementWidgetState extends State<MenumanagementWidget> {
                                                   .fromSTEB(
                                                       15.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'og1sjvbq' /* 商品名 */,
-                                                ),
+                                                listViewMenuItemsRecord.name,
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -745,11 +743,9 @@ class _MenumanagementWidgetState extends State<MenumanagementWidget> {
                                                                     0.0,
                                                                     0.0),
                                                         child: Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'vz71ii1n' /* 390 */,
-                                                          ),
+                                                          listViewMenuItemsRecord
+                                                              .price
+                                                              .toString(),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -980,7 +976,15 @@ class _MenumanagementWidgetState extends State<MenumanagementWidget> {
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
-                                            context.pushNamed('MenuSettings');
+                                            context.pushNamed(
+                                              'MenuSettings',
+                                              queryParameters: {
+                                                'name': serializeParam(
+                                                  listViewMenuItemsRecord.name,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
                                           },
                                           child: Container(
                                             width: 60.0,

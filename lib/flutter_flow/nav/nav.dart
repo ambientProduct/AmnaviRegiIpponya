@@ -67,7 +67,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'MenuSettings',
           path: '/menuSettings',
-          builder: (context, params) => MenuSettingsWidget(),
+          builder: (context, params) => MenuSettingsWidget(
+            name: params.getParam('name', ParamType.String),
+          ),
         ),
         FFRoute(
           name: 'Settings',
@@ -238,6 +240,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'OrderNowCopy',
           path: '/orderNowCopy',
           builder: (context, params) => OrderNowCopyWidget(),
+        ),
+        FFRoute(
+          name: 'MenuSettingsCopy',
+          path: '/menuSettingsCopy',
+          builder: (context, params) => MenuSettingsCopyWidget(
+            name: params.getParam('name', ParamType.String),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

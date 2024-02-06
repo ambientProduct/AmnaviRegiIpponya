@@ -61,3 +61,5 @@ export '/order/completed_orders/completed_orders_widget.dart'
 export '/order/order_now/order_now_widget.dart' show OrderNowWidget;
 export '/order/order_now_copy/order_now_copy_widget.dart'
     show OrderNowCopyWidget;
+export '/menu_check/menu_settings_copy/menu_settings_copy_widget.dart'
+    show MenuSettingsCopyWidget;
