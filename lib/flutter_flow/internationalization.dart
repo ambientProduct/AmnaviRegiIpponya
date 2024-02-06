@@ -1923,20 +1923,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '¥',
       'en': '',
     },
-    'k0chygsd': {
-      'ja': '1,290',
-      'en': '',
-    },
     'k3c78qxi': {
       'ja': '合計（税込）',
       'en': '',
     },
     'tnd4tg7o': {
       'ja': '¥',
-      'en': '',
-    },
-    'aozhe6pc': {
-      'ja': '1,290',
       'en': '',
     },
     'yqilhopn': {

@@ -8,6 +8,7 @@ import '/payment/numbers_component/numbers_component_widget.dart';
 import '/payment/pay_component/pay_component_widget.dart';
 import '/payment/waribiki/waribiki_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'accounting_widget.dart' show AccountingWidget;
 import 'package:styled_divider/styled_divider.dart';
 import 'package:flutter/material.dart';

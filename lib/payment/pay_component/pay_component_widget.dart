@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/payment/otsuri/otsuri_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -1011,6 +1013,22 @@ class _PayComponentWidgetState extends State<PayComponentWidget> {
                               'Order',
                               'Paid',
                             );
+                            _model.closetable = await queryTableListRecordOnce(
+                              queryBuilder: (tableListRecord) =>
+                                  tableListRecord.where(
+                                'tableNo',
+                                isEqualTo: widget.tableno,
+                              ),
+                              singleRecord: true,
+                            ).then((s) => s.firstOrNull);
+
+                            await _model.closetable!.reference
+                                .update(createTableListRecordData(
+                              tableOn: false,
+                            ));
+                            context.safePop();
+
+                            setState(() {});
                           },
                           child: Container(
                             width: 200.0,

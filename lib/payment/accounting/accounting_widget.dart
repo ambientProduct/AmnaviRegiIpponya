@@ -8,6 +8,7 @@ import '/payment/numbers_component/numbers_component_widget.dart';
 import '/payment/pay_component/pay_component_widget.dart';
 import '/payment/waribiki/waribiki_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:styled_divider/styled_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -667,7 +668,11 @@ class _AccountingWidgetState extends State<AccountingWidget> {
                                                           )
                                                           .where(
                                                             'State',
-                                                            isEqualTo: 'Served',
+                                                            isEqualTo: 'Order',
+                                                          )
+                                                          .where(
+                                                            'Served',
+                                                            isEqualTo: true,
                                                           ),
                                             ),
                                             builder: (context, snapshot) {
@@ -927,17 +932,69 @@ class _AccountingWidgetState extends State<AccountingWidget> {
                                                                   0.0,
                                                                   15.0,
                                                                   0.0),
-                                                      child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'k0chygsd' /* 1,290 */,
+                                                      child: StreamBuilder<
+                                                          List<
+                                                              ItemDetailRecord>>(
+                                                        stream:
+                                                            queryItemDetailRecord(
+                                                          queryBuilder:
+                                                              (itemDetailRecord) =>
+                                                                  itemDetailRecord
+                                                                      .where(
+                                                                        'tableNo',
+                                                                        isEqualTo:
+                                                                            _model.textname,
+                                                                      )
+                                                                      .where(
+                                                                        'State',
+                                                                        isEqualTo:
+                                                                            'Order',
+                                                                      )
+                                                                      .where(
+                                                                        'Served',
+                                                                        isEqualTo:
+                                                                            true,
+                                                                      ),
                                                         ),
-                                                        textAlign:
-                                                            TextAlign.start,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                        builder: (context,
+                                                            snapshot) {
+                                                          // Customize what your widget looks like when it's loading.
+                                                          if (!snapshot
+                                                              .hasData) {
+                                                            return Center(
+                                                              child: SizedBox(
+                                                                width: 50.0,
+                                                                height: 50.0,
+                                                                child:
+                                                                    CircularProgressIndicator(
+                                                                  valueColor:
+                                                                      AlwaysStoppedAnimation<
+                                                                          Color>(
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          }
+                                                          List<ItemDetailRecord>
+                                                              textItemDetailRecordList =
+                                                              snapshot.data!;
+                                                          return Text(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              functions
+                                                                  .calculateCart(
+                                                                      textItemDetailRecordList
+                                                                          .toList())
+                                                                  .toString(),
+                                                              '0',
+                                                            ),
+                                                            textAlign:
+                                                                TextAlign.start,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
@@ -950,6 +1007,8 @@ class _AccountingWidgetState extends State<AccountingWidget> {
                                                                   useGoogleFonts:
                                                                       false,
                                                                 ),
+                                                          );
+                                                        },
                                                       ),
                                                     ),
                                                   ],
@@ -1032,17 +1091,69 @@ class _AccountingWidgetState extends State<AccountingWidget> {
                                                                   0.0,
                                                                   15.0,
                                                                   0.0),
-                                                      child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'aozhe6pc' /* 1,290 */,
+                                                      child: StreamBuilder<
+                                                          List<
+                                                              ItemDetailRecord>>(
+                                                        stream:
+                                                            queryItemDetailRecord(
+                                                          queryBuilder:
+                                                              (itemDetailRecord) =>
+                                                                  itemDetailRecord
+                                                                      .where(
+                                                                        'tableNo',
+                                                                        isEqualTo:
+                                                                            _model.textname,
+                                                                      )
+                                                                      .where(
+                                                                        'State',
+                                                                        isEqualTo:
+                                                                            'Order',
+                                                                      )
+                                                                      .where(
+                                                                        'Served',
+                                                                        isEqualTo:
+                                                                            true,
+                                                                      ),
                                                         ),
-                                                        textAlign:
-                                                            TextAlign.start,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                        builder: (context,
+                                                            snapshot) {
+                                                          // Customize what your widget looks like when it's loading.
+                                                          if (!snapshot
+                                                              .hasData) {
+                                                            return Center(
+                                                              child: SizedBox(
+                                                                width: 50.0,
+                                                                height: 50.0,
+                                                                child:
+                                                                    CircularProgressIndicator(
+                                                                  valueColor:
+                                                                      AlwaysStoppedAnimation<
+                                                                          Color>(
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          }
+                                                          List<ItemDetailRecord>
+                                                              textItemDetailRecordList =
+                                                              snapshot.data!;
+                                                          return Text(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              functions
+                                                                  .calculateCart(
+                                                                      textItemDetailRecordList
+                                                                          .toList())
+                                                                  .toString(),
+                                                              '0',
+                                                            ),
+                                                            textAlign:
+                                                                TextAlign.start,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
@@ -1055,6 +1166,8 @@ class _AccountingWidgetState extends State<AccountingWidget> {
                                                                   useGoogleFonts:
                                                                       false,
                                                                 ),
+                                                          );
+                                                        },
                                                       ),
                                                     ),
                                                   ],
@@ -1476,7 +1589,11 @@ class _AccountingWidgetState extends State<AccountingWidget> {
                                               )
                                               .where(
                                                 'State',
-                                                isEqualTo: 'Served',
+                                                isEqualTo: 'Order',
+                                              )
+                                              .where(
+                                                'Served',
+                                                isEqualTo: true,
                                               ),
                                     ),
                                     builder: (context, snapshot) {
